@@ -1,6 +1,7 @@
 package com.appperfektion.balloonpopping
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -18,11 +19,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var handler: Handler
     lateinit var runnable: Runnable
     lateinit var balloonsArray: Array<ImageView>
+    lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.balloon_pop)
 
         balloonsArray = arrayOf(
             mainBinding.balloon1,
@@ -70,6 +74,7 @@ class MainActivity : AppCompatActivity() {
 
             for (balloon in balloonsArray){
                    balloon.visibility =  View.INVISIBLE
+                balloon.setImageResource(R.drawable.balloon)
             }
             mainBinding.gridLayout.visibility = View.VISIBLE
             val i = Random.nextInt(balloonsArray.size)
@@ -83,5 +88,25 @@ class MainActivity : AppCompatActivity() {
     fun increaseScoreByOne(view: View){
         score++
         mainBinding.textViewScore.text = "Score: $score"
+
+        if (mediaPlayer.isPlaying){
+            mediaPlayer.seekTo(0)
+            mediaPlayer.start()
+        } else {
+            mediaPlayer.start()
+        }
+
+        when(view.id){
+            mainBinding.balloon1.id -> mainBinding.balloon1.setImageResource(R.drawable.boom)
+            mainBinding.balloon2.id -> mainBinding.balloon2.setImageResource(R.drawable.boom)
+            mainBinding.balloon3.id -> mainBinding.balloon3.setImageResource(R.drawable.boom)
+            mainBinding.balloon4.id -> mainBinding.balloon4.setImageResource(R.drawable.boom)
+            mainBinding.balloon5.id -> mainBinding.balloon5.setImageResource(R.drawable.boom)
+            mainBinding.balloon6.id -> mainBinding.balloon6.setImageResource(R.drawable.boom)
+            mainBinding.balloon7.id -> mainBinding.balloon7.setImageResource(R.drawable.boom)
+            mainBinding.balloon8.id -> mainBinding.balloon8.setImageResource(R.drawable.boom)
+            mainBinding.balloon9.id -> mainBinding.balloon9.setImageResource(R.drawable.boom)
+
+        }
     }
 }
