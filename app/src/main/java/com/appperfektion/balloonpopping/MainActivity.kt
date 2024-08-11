@@ -10,6 +10,7 @@ import com.appperfektion.balloonpopping.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var mainBinding: ActivityMainBinding
+    var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,5 +41,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         }.start()
+    }
+
+    fun increaseScoreByOne(view: View){
+        score++
+        mainBinding.textViewScore.text = "Score: $score"
     }
 }
