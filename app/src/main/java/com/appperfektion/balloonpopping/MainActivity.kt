@@ -20,11 +20,29 @@ class MainActivity : AppCompatActivity() {
     lateinit var runnable: Runnable
     lateinit var balloonsArray: Array<ImageView>
     lateinit var mediaPlayer: MediaPlayer
+    var status = false                              //volume sound is on
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
+        mainBinding.toolbar.setOnMenuItemClickListener{
+            if (it.itemId == R.id.volume){
+                if(!status){
+                    mediaPlayer.setVolume(0F, 0F)
+                    it.setIcon(R.drawable.volume_off)
+                    status = true
+                } else {
+                    mediaPlayer.setVolume(1F, 1F)
+                    it.setIcon(R.drawable.volume_up)
+                    status = false
+                }
+                return@setOnMenuItemClickListener true
+            } else {
+                return@setOnMenuItemClickListener false
+            }
+        }
 
         mediaPlayer = MediaPlayer.create(this, R.raw.balloon_pop)
 
