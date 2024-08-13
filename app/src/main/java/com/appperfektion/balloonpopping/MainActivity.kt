@@ -74,7 +74,9 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onFinish() {
                         val intent = Intent(this@MainActivity,ResultActivity::class.java)
+                        intent.putExtra("score", score)
                         startActivity(intent)
+                        finish()        //remove intent from backstack
                     }
                 }.start()
             }
