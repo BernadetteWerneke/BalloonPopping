@@ -100,7 +100,20 @@ class MainActivity : AppCompatActivity() {
             val i = Random.nextInt(balloonsArray.size)
             balloonsArray[i].visibility = View.VISIBLE
 
-            handler.postDelayed(runnable, 2000)
+            //speeding up the game
+            if (score <= 5){
+                handler.postDelayed(runnable, 2000)
+            }
+            if (score in 6 .. 10){
+                handler.postDelayed(runnable, 1500)
+            }
+            if (score in 11 .. 15){
+                handler.postDelayed(runnable, 1000)
+            }
+            if (score > 15){
+                handler.postDelayed(runnable, 500)
+            }
+
         }
         handler.post(runnable)
     }

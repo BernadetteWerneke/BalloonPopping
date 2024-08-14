@@ -22,11 +22,20 @@ class ResultActivity : AppCompatActivity() {
         sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE)
         val highestScore = sharedPreferences.getInt("highestScore", 0)
 
-            if (myScore >= highestScore){
-                sharedPreferences.edit().putInt("highestScore", myScore).apply()        //save the score
-                resultBinding.textViewHighestScore.text = "Highest Score: $myScore"
+        if (myScore >= highestScore) {
+            sharedPreferences.edit().putInt("highestScore", myScore).apply()        //save the score
+            resultBinding.textViewHighestScore.text = "Highest Score: $myScore"
+            resultBinding.textViewInfo.text = "Congratulations. The new high score. Do you want to get better scores?"
+        } else {
+            resultBinding.textViewHighestScore.text = "Highest Score: $highestScore"
+
+            if ((highestScore-myScore) > 10){
+                resultBinding.textViewInfo.text = "You must get a little faster!"
+            } else if ((highestScore-myScore) in 4..10){
+                resultBinding.textViewInfo.text = "Good. How about getting a little faster?"
             } else {
-                resultBinding.textViewHighestScore.text = "Highest Score: $highestScore"
+                resultBinding.textViewInfo.text = "Excellent. If you get a little faster, you can reach the high score."
             }
+        }
     }
 }
