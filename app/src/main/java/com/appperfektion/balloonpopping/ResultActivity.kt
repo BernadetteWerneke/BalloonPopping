@@ -1,6 +1,7 @@
 package com.appperfektion.balloonpopping
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,15 @@ class ResultActivity : AppCompatActivity() {
             } else {
                 resultBinding.textViewInfo.text = "Excellent. If you get a little faster, you can reach the high score."
             }
+        }
+
+        resultBinding.buttonPlayAgain.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
+        resultBinding.buttonQuit.setOnClickListener {
+            finishAffinity()
         }
     }
 }
