@@ -10,6 +10,8 @@ And after the game is over the result activity is going to open up and the resul
 Also be able to see the score and the highest score.   
 And if you want to play or quit the game use those buttons.  
 
+<img src="https://github.com/user-attachments/assets/ff2e58ba-043b-41df-b313-c62941ddffa9" height=500>  <br>
+
 <img src="https://github.com/user-attachments/assets/aa81f04e-2736-46ec-af31-afe4436d9833" height=500>
 <img src="https://github.com/user-attachments/assets/4eb7f418-dbea-4331-ad21-26c6d9f1cba3" height=500>
 <img src="https://github.com/user-attachments/assets/63f658c5-5793-4ac5-b11c-df854d1ace6b" height=500>
